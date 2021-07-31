@@ -1,0 +1,7 @@
+{
+  "jshint.options": {
+
+    "esversion": 9,
+  },
+  "git.ignoreLimitWarning": true
+}
