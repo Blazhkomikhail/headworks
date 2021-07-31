@@ -8,8 +8,8 @@
 }
 
 .card {
-  width: 300px;
-  height: 400px;
+  width: 60vw;
+  min-height: 360px;
 
   display: flex;
   flex-direction: column;
@@ -21,21 +21,82 @@
   transform-origin: right;
   transition: all 0.5s;
 
-  border: 1px solid;
   border-radius: 4px; 
 
   &_front,
   &_back {
-    position: absolute;
-    top: 0;
+    padding: 15px;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
     border-radius: 4px; 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+  }
+
+  &_front {
+    display: flex;
+    overflow: hidden;
   }
   
   &_back {
     transform: rotateX(180deg);
+  }
+
+  &_meal-picture { 
+    width: 200px;
+    height: 200px;
+
+    align-self: center;
+    flex: 1 0 auto;
+
+    position: relative;
+    left: -50px;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+  }
+
+  &_meal-info {
+    margin-bottom: 40px;
+
+    display: flex; 
+    justify-content: space-between;
+
+    width: 100%;
+
+    font-size: 0.8em;
+    color: rgb(131, 131, 131);
+  }
+
+  &_meal-main-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &_heading {
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  &_instructions {
+    font-size: 0.9em;
+    color: rgb(102, 102, 102);
+  }
+
+  &_more-less-text {
+
+    align-self: flex-end;
+
+    font-size: 0.8em;
+    color: rgb(102, 102, 102);
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
