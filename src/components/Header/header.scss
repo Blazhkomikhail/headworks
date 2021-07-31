@@ -1,0 +1,23 @@
+.header {
+  height: 50px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgb(207, 207, 207);
+
+  &_nav {
+    width: 30vw;
+    min-width: 320px;
+  }
+
+  &_nav-list {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &_nav-item { 
+    list-style: none;
+  }
+}
