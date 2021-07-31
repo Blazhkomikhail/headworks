@@ -4,23 +4,23 @@ import textPrepare from '../../utils/textPrepare';
 import './recipeCard.scss';
 
 const RecipeCard = (props: TCardProps): JSX.Element => {
-  // const [isFlipped, setIsFlipped] = useState(false);
+  const [isFlipped, setIsFlipped] = useState(false);
   const [instructionText, setInstructionText] = useState('');
   const [isTextCutted, setIsTextCutted] = useState(false);
   const [isTextOpened, setIsTextOpened] = useState(false);
   const cardWrapper = useRef();
 
-  const { 
+  const {
     strMeal,
     strInstructions,
-    strArea, 
+    strArea,
     strCategory,
     strMealThumb,
     strYoutube
   } = props.recipe;
 
   useEffect(() => {
-    if(!isTextOpened) {
+    if (!isTextOpened) {
       setInstructionText(textPrepare(strInstructions, setIsTextCutted))
     }
   });
@@ -29,10 +29,11 @@ const RecipeCard = (props: TCardProps): JSX.Element => {
     strYoutube
   )
 
-  // const flip = () => {
-  //   (cardWrapper.current as HTMLElement).classList.toggle('flipped', !isFlipped);
-  //   setIsFlipped(current => !current);
-  // }
+  const flipHandler = () => {
+    setInstructionText(textPrepare(strInstructions, setIsTextCutted));
+    (cardWrapper.current as HTMLElement).classList.toggle('flipped', !isFlipped);
+    setIsFlipped(current => !current);
+  }
 
   const instructionTextHandler = () => {
     if (!isTextOpened) {
@@ -48,7 +49,7 @@ const RecipeCard = (props: TCardProps): JSX.Element => {
     <div className="card-wrap" ref={cardWrapper}>
       <div className="card">
         <div className="card_front">
-          <div 
+          <div
             className="card_meal-picture"
             style={{ backgroundImage: `url(${strMealThumb})` }}
           />
@@ -60,14 +61,17 @@ const RecipeCard = (props: TCardProps): JSX.Element => {
             <div className="card_meal-main-text">
               <h2 className="card_heading">{strMeal}</h2>
               <p className="card_instructions">{instructionText}</p>
-              {isTextCutted ? 
-              <span 
-                className="card_more-less-text"
-                onClick={instructionTextHandler}
-              >
-                {isTextOpened ? 'Less' : 'More'}
-              </span> : ''}
+              {isTextCutted ?
+                <span
+                  className="card_more-less-text"
+                  onClick={instructionTextHandler}
+                >
+                  {isTextOpened ? 'Less' : 'More'}
+                </span> : ''}
             </div>
+            <button 
+             className="card_ingredients-btn" type="button" onClick={flipHandler}>Ingredients</button>
+
           </div>
         </div>
         <div className="card_back">
