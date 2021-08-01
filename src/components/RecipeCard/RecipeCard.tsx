@@ -67,15 +67,13 @@ const RecipeCard = ({name, instruction, area, categoty, picture}: ICardData): JS
                   {isTextOpened ? 'Less' : 'More'}
                 </span> : ''}
             </div>
-            { isTextCutted ?
-              <button 
-              className="card_ingredients-btn" 
-              type="button" 
-              onClick={flipHandler}
-              >
-                Ingredients
-              </button> : ''
-            } 
+            <button 
+            className="card_ingredients-btn" 
+            type="button" 
+            onClick={flipHandler}
+            >
+              Ingredients
+            </button>
           </div>
         </div>
         <div className="card_back">

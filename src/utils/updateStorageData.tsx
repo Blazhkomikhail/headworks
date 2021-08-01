@@ -4,7 +4,7 @@ const updateStorageData = (
   {strMeal, strInstructions, strArea, strCategory, strMealThumb}: ICardData,
   newMealHeandler: () => void,
   repeatMealHeandler: () => void ) => {
-  const mealData = {
+  const dishData = {
     strMeal,
     strInstructions,
     strArea,
@@ -12,11 +12,11 @@ const updateStorageData = (
     strMealThumb
   }; 
   const storageData = JSON.parse(localStorage.getItem('recipes'));
-  const isStorageHasMeal = storageData.some((recipe: ICardData) => recipe.strMeal === mealData.strMeal);
+  const isStorageHasDish = storageData.some((recipe: ICardData) => recipe.strMeal === dishData.strMeal);
   
-  if (!isStorageHasMeal) {
+  if (!isStorageHasDish) {
     newMealHeandler();
-    storageData.push(mealData);
+    storageData.push(dishData);
   } else {
     repeatMealHeandler();
   }
