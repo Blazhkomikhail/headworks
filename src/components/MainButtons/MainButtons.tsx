@@ -3,6 +3,7 @@ import { ICardData } from "../../shared/shared";
 import createStorageData from "../../utils/createStorageData";
 import updateStorageData from "../../utils/updateStorageData";
 import Button from "../Button/Button";
+import './mainButton.scss';
 
 interface IMainButtonsProps {
   skipHandler: () => void;

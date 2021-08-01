@@ -47,9 +47,10 @@ const AddRecipeModal = ({destroyHandler}: {destroyHandler: () => void}): JSX.Ele
     if (localStorage.getItem('recipes')) {
       updateStorageData(customDish, addDishHandler, addDishHandler);
     }
-    console.log(customDish)
+    
     setTimeout(() => {
       destroyHandler();
+      window.location.reload(); //TO DO 
     }, DESTROY_DELAY)
   }
   
