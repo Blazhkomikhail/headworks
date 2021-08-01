@@ -34,8 +34,8 @@ const MainButtons = ({skipHandler, recipe}: IMainButtonsProps) => {
     }
   }
 
-  const buttonText = isMealRepeat ? 'Already in your favourite' : 'Adding to favourite...';
-  console.log(buttonText);
+  const buttonText = isMealRepeat ? 'Already in your favourite' : 'Adding to favourites...';
+
   return (
     <div className="buttons-wrapper">
       <button 
