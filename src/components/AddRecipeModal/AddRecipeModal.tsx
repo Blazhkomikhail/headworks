@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import updateStorageData from "../../utils/updateStorageData";
+import Button from "../Button/Button";
 import './addRecipeModal.scss';
+
+const DESTROY_DELAY = 1500; 
 
 const AddRecipeModal = ({destroyHandler}: {destroyHandler: () => void}): JSX.Element => {
   const [name, setName] = useState('');
@@ -29,7 +32,7 @@ const AddRecipeModal = ({destroyHandler}: {destroyHandler: () => void}): JSX.Ele
     setCreateButtonText('Adding');
     setTimeout(() => {
       setCreateButtonText('Create');
-    }, 1500);
+    }, DESTROY_DELAY);
   }
 
   const createHandler = () => {
@@ -47,7 +50,7 @@ const AddRecipeModal = ({destroyHandler}: {destroyHandler: () => void}): JSX.Ele
     console.log(customDish)
     setTimeout(() => {
       destroyHandler();
-    }, 1500)
+    }, DESTROY_DELAY)
   }
   
   return (
@@ -71,9 +74,16 @@ const AddRecipeModal = ({destroyHandler}: {destroyHandler: () => void}): JSX.Ele
             <input type="text" name="categoty" value={categoty} onChange={updateCategoty} />
           </label>
         </form>
-
-        <button type="button" onClick={destroyHandler}>Cancel</button>
-        <button type="button" onClick={createHandler}>{createButtonText}</button>
+        <Button 
+          classList={'modal_cancel-button'}
+          text={'Cancel'}
+          handler={destroyHandler}
+        />
+        <Button 
+          classList={'modal_create-button'}
+          text={createButtonText}
+          handler={createHandler}
+        />
       </div>
     </div>
   )

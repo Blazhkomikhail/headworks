@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import RecipeCard from '../RecipeCard/RecipeCard';
+import RecipeCard from '../../components/RecipeCard/RecipeCard';
 import getRecepieData from '../../Api/Api';
 import { ICardData } from '../../shared/shared';
-import MainButtons from "../MainButtons/MainButtons";
+import MainButtons from "../../components/MainButtons/MainButtons";
 import './cardField.scss';
 
 const CardField = (): JSX.Element => {

@@ -1,7 +1,7 @@
 import React from "react";
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
-import CardField from "../components/CardField/CardField";
-import Favourites from "../components/Favourites/Favourites";
+import CardField from "../pages/CardField/CardField";
+import Favourites from "../pages/Favourites/Favourites";
 import Header from '../components/Header/Header';
 import './app.scss';
 

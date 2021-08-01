@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ICardData } from "../../shared/shared";
 import createStorageData from "../../utils/createStorageData";
 import updateStorageData from "../../utils/updateStorageData";
+import Button from "../Button/Button";
 
 interface IMainButtonsProps {
   skipHandler: () => void;
@@ -38,21 +39,17 @@ const MainButtons = ({skipHandler, recipe}: IMainButtonsProps) => {
 
   return (
     <div className="buttons-wrapper">
-      <button 
-        className="skip-button"
-        onClick={skipHandler}
-      >
-        Skip
-      </button>
-      <button 
-        className="like-button"
-        onClick={likeHandler}
-      >
-        {
-          !isMealRepeat && !isMealNew ?
-          'Like' : buttonText
-        } 
-      </button>
+      <Button 
+        classList={'skip-button'}
+        text={'Skip'}
+        handler={skipHandler}
+      />
+      <Button 
+        classList={'like-button'}
+        text={!isMealRepeat && !isMealNew ?
+          'Like' : buttonText}
+        handler={likeHandler}
+      />
     </div>
   )
 }

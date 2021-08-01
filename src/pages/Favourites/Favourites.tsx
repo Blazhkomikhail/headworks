@@ -1,6 +1,6 @@
 import React from "react";
 import { ICardData } from "../../shared/shared";
-import RecipeCard from "../RecipeCard/RecipeCard";
+import RecipeCard from "../../components/RecipeCard/RecipeCard";
 import './favourites.scss';
 
 const Favourites = () => {

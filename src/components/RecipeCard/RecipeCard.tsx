@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import textPrepare from '../../utils/textPrepare';
+import Button from "../Button/Button";
 import './recipeCard.scss';
 
 interface ICardData {
@@ -67,13 +68,11 @@ const RecipeCard = ({name, instruction, area, categoty, picture}: ICardData): JS
                   {isTextOpened ? 'Less' : 'More'}
                 </span> : ''}
             </div>
-            <button 
-            className="card_ingredients-btn" 
-            type="button" 
-            onClick={flipHandler}
-            >
-              Ingredients
-            </button>
+            <Button 
+              classList={'card_ingredients-btn'}
+              text={'Ingredients'}
+              handler={flipHandler}
+            />      
           </div>
         </div>
         <div className="card_back">

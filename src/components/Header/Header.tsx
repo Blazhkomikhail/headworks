@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 import AddRecipeModal from "../AddRecipeModal/AddRecipeModal";
+import Button from "../Button/Button";
 import './header.scss';
 
 const body = document.querySelector('body');
@@ -55,9 +56,12 @@ const Header = () => {
         </ul>
       </nav>
 
-      { isFavouritesPage ? 
-        (<button className="header_add-dish-button" type="button" onClick={showModalHandler}>Add custom dish</button>) :
-        ''
+      { isFavouritesPage ?
+        <Button 
+          classList={'header_add-dish-button'}
+          text={'Add custom dish'}
+          handler={showModalHandler}
+        /> : ''
       }
       {isModalShowed ? <AddRecipeModal destroyHandler={destroyModalHandler}/> : ''}
     </header>
