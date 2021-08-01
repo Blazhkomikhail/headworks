@@ -10,6 +10,7 @@ interface IMainButtonsProps {
 
 const MainButtons = ({skipHandler, recipe}: IMainButtonsProps) => {
   const [isMealRepeat, setIsMealRepeat] = useState(false);
+  const [isMealNew, setIsMealNew] = useState(false);
 
   const hasMealHandler = () => {
     setIsMealRepeat(true);
@@ -18,14 +19,23 @@ const MainButtons = ({skipHandler, recipe}: IMainButtonsProps) => {
     }, 2500);
   }
 
+  const newMealHandler = () => {
+    setIsMealNew(true);
+    setTimeout(() => {
+      setIsMealNew(false);
+    }, 2500);
+  }
+  
   const likeHandler = () => {
-    if (!localStorage.getItem('recipes')) {
-      createStorageData(recipe);
+    if (localStorage.getItem('recipes')) {
+      updateStorageData(recipe, newMealHandler, hasMealHandler);
     } else {
-      updateStorageData(recipe, hasMealHandler);
+      createStorageData(recipe);
     }
   }
 
+  const buttonText = isMealRepeat ? 'Already in your favourite' : 'Adding to favourite...';
+  console.log(buttonText);
   return (
     <div className="buttons-wrapper">
       <button 
@@ -39,8 +49,8 @@ const MainButtons = ({skipHandler, recipe}: IMainButtonsProps) => {
         onClick={likeHandler}
       >
         {
-          !isMealRepeat ? 
-          'Like' : 'Already in your favourite'
+          !isMealRepeat && !isMealNew ?
+          'Like' : buttonText
         } 
       </button>
     </div>
