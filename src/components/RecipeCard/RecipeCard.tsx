@@ -68,17 +68,20 @@ const RecipeCard = (props: TCardProps): JSX.Element => {
                   {isTextOpened ? 'Less' : 'More'}
                 </span> : ''}
             </div>
-            <button 
-             className="card_ingredients-btn" 
-             type="button" 
-             onClick={flipHandler}
-            >
-              Ingredients
-            </button>
+            { isTextCutted ?
+              <button 
+              className="card_ingredients-btn" 
+              type="button" 
+              onClick={flipHandler}
+              >
+                Ingredients
+              </button> : ''
+            } 
           </div>
         </div>
         <div className="card_back">
-          Ingredients
+          <h2 className="card_heading">{strMeal}</h2>
+          <p className="card_instructions">{strInstructions}</p>
         </div>
       </div>
     </div>

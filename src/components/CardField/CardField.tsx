@@ -2,12 +2,13 @@ import React, { useState, useEffect } from "react";
 import RecipeCard from '../RecipeCard/RecipeCard';
 import getRecepieData from '../../Api/Api';
 import { ICardData } from '../../shared/shared';
+import MainButtons from "../MainButtons/MainButtons";
 import './cardField.scss';
 
 const CardField = (): JSX.Element => {
   const [recipeData, setRecipeData] = useState<ICardData>({} as ICardData);
 
-  useEffect(() => {
+  const getCardData = () => {
     try {
       getRecepieData()
         .then(data => {
@@ -16,6 +17,10 @@ const CardField = (): JSX.Element => {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  useEffect(() => {
+    getCardData();
   }, [])
 
   console.log(recipeData)
@@ -23,6 +28,7 @@ const CardField = (): JSX.Element => {
   return (
     <main className="card-field">
       <RecipeCard recipe={recipeData} />
+      <MainButtons skipHandler={getCardData} recipe={recipeData}/>
     </main>
   )
 }
