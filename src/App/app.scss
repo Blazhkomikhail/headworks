@@ -12,3 +12,8 @@ body {
 //   background: -ms-linear-gradient(60deg, rgb(253, 216, 149) 30%, rgb(255, 166, 142) 100%);
 //   background: linear-gradient(141deg, rgb(253, 216, 149) 30%, rgb(255, 166, 142) 100%);
 }
+
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+}

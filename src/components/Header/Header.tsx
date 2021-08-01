@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
+import AddRecipeModal from "../AddRecipeModal/AddRecipeModal";
 import './header.scss';
+
+const body = document.querySelector('body');
 
 const Header = () => {
   const [isRandomButtonActive, setIsRandomButtonActive] = useState(true);
   const [isFavouriteButtonActive, setIsFavouriteButtonActive] = useState(false);
-
+  const [isModalShowed, setIsModalShowed] = useState(false);
+  
   const activateRandomButton = () => {
     setIsFavouriteButtonActive(false);
     setIsRandomButtonActive(true);
@@ -15,6 +19,16 @@ const Header = () => {
     setIsFavouriteButtonActive(true);
     setIsRandomButtonActive(false);
   }
+
+  const isFavouritesPage = window.location.hash.slice(2) === 'favourites';
+  const showModalHandler = () => { 
+    setIsModalShowed(true);
+    body.classList.add('stop-scrolling');
+  }
+  const destroyModalHandler = () => {
+    setIsModalShowed(false);
+    body.classList.remove('stop-scrolling');
+  } 
 
   return (
     <header className="header">
@@ -40,6 +54,12 @@ const Header = () => {
           </Link>
         </ul>
       </nav>
+
+      { isFavouritesPage ? 
+        (<button className="header_add-dish-button" type="button" onClick={showModalHandler}>Add custom dish</button>) :
+        ''
+      }
+      {isModalShowed ? <AddRecipeModal destroyHandler={destroyModalHandler}/> : ''}
     </header>
   )
 }
