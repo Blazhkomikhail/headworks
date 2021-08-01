@@ -18,6 +18,25 @@
   }
 
   &_nav-item { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100px;
+    height: 40px;
+    
+    background-color: rgb(255, 0, 140);
+
     list-style: none;
+    font-size: 0.9em;
+
+    &__active {
+      background-color: darken($color: rgb(255, 0, 140), $amount: 4)
+    }
+  }
+
+  &_button {
+    text-decoration: none;
+    color: #fff;
   }
 }
