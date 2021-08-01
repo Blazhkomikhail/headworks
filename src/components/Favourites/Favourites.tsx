@@ -6,13 +6,19 @@ import './favourites.scss';
 const Favourites = () => {
 
   const storageRecipes = JSON.parse(localStorage.getItem('recipes'));
-  const recipeCards = storageRecipes.map((recipe: ICardData, i: number) => (
-    <RecipeCard recipe={recipe} key={i}/> 
-  ))
-
+  let recipeCards = [];
+  if (storageRecipes) {
+    recipeCards = storageRecipes.map((recipe: ICardData, i: number) => (
+      <RecipeCard recipe={recipe} key={i}/> 
+    ));
+  }
+    
   return (
     <main className="favourites">
-      {recipeCards}
+      { recipeCards.length ? 
+        recipeCards : 
+        (<p className="favourite-empty-warning">You have no favourite dishes yet...</p>)
+      }
     </main>
   )
 }
