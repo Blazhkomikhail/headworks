@@ -15,32 +15,31 @@ const RecipeCard = (props: TCardProps): JSX.Element => {
     strInstructions,
     strArea,
     strCategory,
-    strMealThumb,
-    strYoutube
+    strMealThumb
   } = props.recipe;
+
+  const setTextState = (textState: boolean) => {
+    setIsTextCutted(textState);
+  }
 
   useEffect(() => {
     if (!isTextOpened) {
-      setInstructionText(textPrepare(strInstructions, setIsTextCutted))
+      setInstructionText(textPrepare(strInstructions, setTextState))
     }
   });
 
-  console.log(
-    strYoutube
-  )
-
   const flipHandler = () => {
-    setInstructionText(textPrepare(strInstructions, setIsTextCutted));
+    setInstructionText(textPrepare(strInstructions, setTextState));
     (cardWrapper.current as HTMLElement).classList.toggle('flipped', !isFlipped);
     setIsFlipped(current => !current);
   }
 
   const instructionTextHandler = () => {
     if (!isTextOpened) {
-      setIsTextOpened(true);
       setInstructionText(strInstructions);
+      setIsTextOpened(true);
     } else {
-      setInstructionText(textPrepare(strInstructions, setIsTextCutted));
+      setInstructionText(textPrepare(strInstructions, setTextState));
       setIsTextOpened(false);
     }
   }
@@ -51,7 +50,7 @@ const RecipeCard = (props: TCardProps): JSX.Element => {
         <div className="card_front">
           <div
             className="card_meal-picture"
-            style={{ backgroundImage: `url(${strMealThumb})` }}
+            style={{backgroundImage: `url(${strMealThumb || './icons/no-image-icon.png'})` }}
           />
           <div className="card_meal-text">
             <div className="card_meal-info">
@@ -70,8 +69,12 @@ const RecipeCard = (props: TCardProps): JSX.Element => {
                 </span> : ''}
             </div>
             <button 
-             className="card_ingredients-btn" type="button" onClick={flipHandler}>Ingredients</button>
-
+             className="card_ingredients-btn" 
+             type="button" 
+             onClick={flipHandler}
+            >
+              Ingredients
+            </button>
           </div>
         </div>
         <div className="card_back">

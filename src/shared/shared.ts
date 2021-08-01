@@ -4,7 +4,6 @@ export interface ICardData {
   strArea: string;
   strCategory: string;
   strMealThumb: string;
-  strYoutube: string;
   [key: string] : string;
 }
 
