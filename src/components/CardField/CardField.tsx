@@ -27,7 +27,13 @@ const CardField = (): JSX.Element => {
 
   return (
     <main className="card-field">
-      <RecipeCard recipe={recipeData} />
+      <RecipeCard 
+        name={recipeData.strMeal} 
+        instruction={recipeData.strInstructions}
+        area={recipeData.strArea}
+        categoty={recipeData.strCategory}
+        picture={recipeData.strMealThumb}
+      />
       <MainButtons skipHandler={getCardData} recipe={recipeData}/>
     </main>
   )

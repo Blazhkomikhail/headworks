@@ -9,7 +9,14 @@ const Favourites = () => {
   let recipeCards = [];
   if (storageRecipes) {
     recipeCards = storageRecipes.map((recipe: ICardData, i: number) => (
-      <RecipeCard recipe={recipe} key={i}/> 
+      <RecipeCard 
+        name={recipe.strMeal} 
+        instruction={recipe.strInstructions}
+        area={recipe.strArea}
+        categoty={recipe.strCategory}
+        picture={recipe.strMealThumb}
+        key={i}
+      /> 
     ));
   }
     
