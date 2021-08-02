@@ -1,5 +1,5 @@
 import React from "react";
-import { ICardData } from "../../shared/shared";
+import { IRecipeData } from "../../shared/shared";
 import RecipeCard from "../../components/RecipeCard/RecipeCard";
 import './favourites.scss';
 
@@ -8,13 +8,9 @@ const Favourites = () => {
   const storageRecipes = JSON.parse(localStorage.getItem('recipes'));
   let recipeCards = [];
   if (storageRecipes) {
-    recipeCards = storageRecipes.map((recipe: ICardData, i: number) => (
+    recipeCards = storageRecipes.map((recipe: IRecipeData, i: number) => (
       <RecipeCard 
-        name={recipe.strMeal} 
-        instruction={recipe.strInstructions}
-        area={recipe.strArea}
-        categoty={recipe.strCategory}
-        picture={recipe.strMealThumb}
+        recipe={recipe}
         key={i}
       /> 
     ));

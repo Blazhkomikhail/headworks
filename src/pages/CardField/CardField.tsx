@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import RecipeCard from '../../components/RecipeCard/RecipeCard';
 import getRecepieData from '../../Api/Api';
-import { ICardData } from '../../shared/shared';
+import { IRecipeData } from '../../shared/shared';
 import MainButtons from "../../components/MainButtons/MainButtons";
 import './cardField.scss';
 
 const CardField = (): JSX.Element => {
-  const [recipeData, setRecipeData] = useState<ICardData>({} as ICardData);
+  const [recipeData, setRecipeData] = useState<IRecipeData>({} as IRecipeData);
 
   const getCardData = () => {
     try {
@@ -24,16 +24,10 @@ const CardField = (): JSX.Element => {
   }, [])
 
   console.log(recipeData)
-
+  
   return (
     <main className="card-field">
-      <RecipeCard 
-        name={recipeData.strMeal} 
-        instruction={recipeData.strInstructions}
-        area={recipeData.strArea}
-        categoty={recipeData.strCategory}
-        picture={recipeData.strMealThumb}
-      />
+      <RecipeCard recipe={recipeData}/>
       <MainButtons skipHandler={getCardData} recipe={recipeData}/>
     </main>
   )

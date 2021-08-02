@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ICardData } from "../../shared/shared";
+import { IRecipeData } from "../../shared/shared";
 import createStorageData from "../../utils/createStorageData";
 import updateStorageData from "../../utils/updateStorageData";
 import Button from "../Button/Button";
@@ -7,7 +7,7 @@ import './mainButton.scss';
 
 interface IMainButtonsProps {
   skipHandler: () => void;
-  recipe: ICardData;
+  recipe: IRecipeData;
 }
 
 const MainButtons = ({skipHandler, recipe}: IMainButtonsProps) => {

@@ -1,6 +1,6 @@
-import { ICardData } from "../shared/shared";
+import { IRecipeData } from "../shared/shared";
 
-const createStorageData = ({strMeal, strInstructions, strArea, strCategory, strMealThumb}: ICardData) => {
+const createStorageData = ({strMeal, strInstructions, strArea, strCategory, strMealThumb}: IRecipeData) => {
   const mealData = {
     strMeal,
     strInstructions,

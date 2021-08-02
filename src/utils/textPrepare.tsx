@@ -1,9 +1,9 @@
 const textMaxLength = 140;
  
-const textPrepare = (text: string, stateSetter: (value:boolean) => void) => {
+const textPrepare = (text: string, handlerSet: (value:boolean) => void) => {
   if (!text) return;
   if (text.length > textMaxLength) {
-    stateSetter(true);
+    handlerSet(true);
     return `${text.slice(0, textMaxLength)}...`;
   }
   return text;

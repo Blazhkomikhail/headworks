@@ -35,35 +35,30 @@ const Header = () => {
     <header className="header">
       <nav className="header_nav">
         <ul className="header_nav-list">
-          <Link to="/" className="header_button">
+          <Link to="/" className="header_link">
             <li className={
-              `header_nav-item 
-              ${isRandomButtonActive ? ' header_nav-item__active' : ''}`}
-              onClick={activateRandomButton}
-            >
+              `header_nav-item${isRandomButtonActive ? ' header_nav-item__active' : ''}`}
+              onClick={activateRandomButton} >
               Random dish
             </li>
           </Link>
-          <Link to="/favourites" className="header_button">
+
+          <Link to="/favourites" className="header_link">
             <li className={
-              `header_nav-item 
-              ${isFavouriteButtonActive ? ' header_nav-item__active' : ''}`}
-              onClick={activateFavouriteButton}
-            >
+              `header_nav-item${isFavouriteButtonActive ? ' header_nav-item__active' : ''}`}
+              onClick={activateFavouriteButton} >
               Farvourites
             </li>
           </Link>
         </ul>
       </nav>
 
-      { isFavouritesPage ?
-        <Button 
-          classList={'header_add-dish-button'}
-          text={'Add custom dish'}
-          handler={showModalHandler}
-        /> : ''
+      { isFavouritesPage && 
+        <Button classList={'header_add-dish-button'} 
+                text={'Add custom dish'}
+                handler={showModalHandler} />
       }
-      {isModalShowed ? <AddRecipeModal destroyHandler={destroyModalHandler}/> : ''}
+      { isModalShowed && <AddRecipeModal destroyHandler={destroyModalHandler} /> }
     </header>
   )
 }
