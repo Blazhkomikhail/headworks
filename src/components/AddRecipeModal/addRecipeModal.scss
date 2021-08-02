@@ -10,4 +10,40 @@
   background-color: rgba(0, 0, 0, 0.6);
 
   z-index: 111;
+
+  &_wrapper {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 4px;
+  }
+
+  &_form {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  &_textarea {
+    width: 300px;
+    height: 240px;
+  }
+  
+  &_buttons-wrapper {
+    width: 100%;
+    justify-content: space-around;
+    display: flex;
+  }
+
+  &_cancel-button {
+    background: #fe0667;
+  }
+
+  &_create-button {
+    background: #5e69ff;
+  }
+
 }

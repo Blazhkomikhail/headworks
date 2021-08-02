@@ -3,7 +3,7 @@
   perspective: 100rem;
   
   &.flipped > .card { 
-    transform: rotateX(-180deg);
+    transform: rotateY(180deg);
     // transform-origin: top;
   }
 }
@@ -37,24 +37,55 @@
 
   &_front {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     overflow: hidden;
     transition: all 0.3s;
   }
   
   &_back {
-    transform: rotateX(180deg);
+    transform: rotateY(180deg);
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    
+    & > .card_heading  {
+      margin-bottom: 14px;
+    }
+
+    &-table {
+      width: 80%;
+    }
+
+    &-table thead {
+      background: #5e69ff;
+      color: #fff;
+      height: 30px;
+    }
+
+    &-table tr{
+      text-align: center;
+    }
+
+    &-table td{
+      border-bottom: 1px solid #5e69ff;
+    }
   }
 
   &_meal-picture { 
+    margin-bottom: 20px;
+
     width: 200px;
     height: 200px;
 
-    align-self: center;
-    flex: 1 0 auto;
+    // align-self: center;
+    // flex: 1 0 auto;
 
-    position: relative;
-    left: -50px;
+    // position: relative;
+    // left: -50px;
 
     background-size: cover;
     background-position: center;
@@ -70,7 +101,7 @@
   }
 
   &_meal-info {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 
     display: flex; 
     justify-content: space-between;
@@ -109,7 +140,7 @@
     }
   }
 
-  &_ingredients-btn {
+  &_flip-btn {
     margin-top: 20px;
 
     width: 100px;
@@ -122,6 +153,12 @@
     border: none;
     background-color: #fe0667;
     color: #fff;
+
+    &__back {
+      align-self: flex-start;
+      left: -15px;
+      flex-shrink: 0;
+    }
 
     &:hover {
       cursor: pointer;

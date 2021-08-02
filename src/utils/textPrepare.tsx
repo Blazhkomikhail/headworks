@@ -1,4 +1,4 @@
-const textMaxLength = 140;
+const textMaxLength = 300;
  
 const textPrepare = (text: string, handlerSet: (value:boolean) => void) => {
   if (!text) return;

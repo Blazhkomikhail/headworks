@@ -25,7 +25,7 @@ const RecipeCard = ({recipe}: ICardProp): JSX.Element => {
           picture={recipe.strMealThumb}
           handleFlip={flipHandler}
         />
-        <CardBack recipeData={recipe}/>
+        <CardBack recipeData={recipe} flipHandler={flipHandler}/>
       </div>
     </div>
   )

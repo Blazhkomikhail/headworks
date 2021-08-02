@@ -1,4 +1,5 @@
 import React from "react";
+import './button.scss';
 
 interface IButtonProps {
   classList: [] | string;
@@ -10,7 +11,7 @@ const Button = ({classList = '', text = 'Button', handler}: IButtonProps) => {
 
   return (
     <button 
-      className={ Array.isArray(classList) ? classList.join(' ') : classList } 
+      className={`button ${Array.isArray(classList) ? classList.join(' ') : classList}` } 
       type="button"
       onClick={handler}
     >

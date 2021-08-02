@@ -1,6 +1,6 @@
 import React from "react";
 import { ICardProp } from "../../../shared/shared";
-
+import capitalizeFirstLetter from "../../../utils/capitalizeFirstLetter";
 
 const IngredientsTable = ({recipe}: ICardProp): JSX.Element => {
   if (!recipe) return;
@@ -11,14 +11,14 @@ const IngredientsTable = ({recipe}: ICardProp): JSX.Element => {
     if (recipe[`strIngredient${i}`]) {
       const row = 
         <tr key={i}>
-          <td>{recipe[`strIngredient${i}`]}</td>
-          <td>{recipe[`strMeasure${i}`]}</td>
+          <td>{capitalizeFirstLetter(recipe[`strIngredient${i}`])}</td>
+          <td>{capitalizeFirstLetter(recipe[`strMeasure${i}`])}</td>
         </tr>
       rows.push(row);
     }
   }
   return (
-    <table>
+    <table className="card_back-table">
       <thead>
         <tr>
           <th>Ingredient</th>

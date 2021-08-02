@@ -2,20 +2,6 @@
   display: flex;
 }
 
-.skip-button,
-.like-button {
-  width: 100px;
-  height: 40px;
-  list-style: none;
-  font-size: 0.9em;
-  color: #fff;
-  border: none;
-
-  &:hover {
-    cursor: pointer;
-  }
-}
-
 .skip-button {
   background: #fe0667;
 }

@@ -23,8 +23,6 @@ const CardField = (): JSX.Element => {
     getCardData();
   }, [])
 
-  console.log(recipeData)
-  
   return (
     <main className="card-field">
       <RecipeCard recipe={recipeData}/>

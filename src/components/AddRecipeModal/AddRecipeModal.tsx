@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import updateStorageData from "../../utils/updateStorageData";
 import Button from "../Button/Button";
 import './addRecipeModal.scss';
+import TextInput from "./TextInput/TextInput";
 
 const DESTROY_DELAY = 1500; 
 
@@ -16,7 +17,7 @@ const AddRecipeModal = ({destroyHandler}: {destroyHandler: () => void}): JSX.Ele
     setName(e.currentTarget.value);
   }
 
-  const updateInstruction = (e: React.FormEvent<HTMLInputElement>) => {
+  const updateInstruction = (e: React.FormEvent<HTMLTextAreaElement>) => {
     setInstruction(e.currentTarget.value);
   }
 
@@ -57,34 +58,23 @@ const AddRecipeModal = ({destroyHandler}: {destroyHandler: () => void}): JSX.Ele
   return (
     <div className="modal">
       <div className="modal_wrapper">
-        <form>
-          <label htmlFor="name">
-            Dish name:
-            <input type="text" name="name" value={name} onChange={updateName} />
-          </label>
-          <label htmlFor="instruction">
+        <form className="modal_form">
+          <TextInput labelName={'Dish name:'} name={'name'} value={name} handler={updateName} />
+          <TextInput labelName={'Area of cuisine:'} name={'area'} value={area} handler={updateArea} />
+          <TextInput labelName={'Categoty:'} name={'categoty'} value={categoty} handler={updateCategoty} />
+          <label htmlFor="instruction"> 
             Instructions:
-            <input type="text" name="instruction" value={instruction} onChange={updateInstruction} />
-          </label>
-          <label htmlFor="area">
-            Area of cuisine:
-            <input type="text" name="area" value={area} onChange={updateArea} />
-          </label>
-          <label htmlFor="categoty">
-            Categoty:
-            <input type="text" name="categoty" value={categoty} onChange={updateCategoty} />
+            <textarea className="modal_textarea" name="instruction" value={instruction} onChange={updateInstruction} />
           </label>
         </form>
-        <Button 
-          classList={'modal_cancel-button'}
-          text={'Cancel'}
-          handler={destroyHandler}
-        />
-        <Button 
-          classList={'modal_create-button'}
-          text={createButtonText}
-          handler={createHandler}
-        />
+        <div className="modal_buttons-wrapper">
+          <Button classList={'modal_cancel-button'}
+                  text={'Cancel'}
+                  handler={destroyHandler} />
+          <Button classList={'modal_create-button'}
+                  text={createButtonText}
+                  handler={createHandler} />
+        </div>
       </div>
     </div>
   )
