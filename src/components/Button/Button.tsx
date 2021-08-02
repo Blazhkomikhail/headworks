@@ -6,7 +6,7 @@ interface IButtonProps {
   handler: () => void;
 }
 
-const Button = ({classList, text, handler}: IButtonProps) => {
+const Button = ({classList = '', text = 'Button', handler}: IButtonProps) => {
 
   return (
     <button 
