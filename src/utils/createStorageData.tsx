@@ -1,6 +1,7 @@
 import { IRecipeData } from "../shared/shared";
 
-const createStorageData = ({strMeal, strInstructions, strArea, strCategory, strMealThumb}: IRecipeData) => {
+const createStorageData = (
+  {strMeal, strInstructions, strArea, strCategory, strMealThumb}: IRecipeData) => {
   const mealData = {
     strMeal,
     strInstructions,
@@ -8,9 +9,7 @@ const createStorageData = ({strMeal, strInstructions, strArea, strCategory, strM
     strCategory,
     strMealThumb
   };
-    
   const recipeStore = new Array(mealData);
-  
   localStorage.setItem('recipes', JSON.stringify(recipeStore));
 }
 

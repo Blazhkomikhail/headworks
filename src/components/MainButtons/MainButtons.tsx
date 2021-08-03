@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { IRecipeData } from "../../shared/shared";
 import createStorageData from "../../utils/createStorageData";
 import updateStorageData from "../../utils/updateStorageData";
 import Button from "../Button/Button";
+import { RecipeContext } from "../../shared/RecipeProvider";
 import './mainButton.scss';
+import isStorageHasDish from "../../utils/isStorageHasDish";
 
 interface IMainButtonsProps {
   skipHandler: () => void;
@@ -11,32 +13,44 @@ interface IMainButtonsProps {
 }
 
 const MainButtons = ({skipHandler, recipe}: IMainButtonsProps) => {
-  const [isMealRepeat, setIsMealRepeat] = useState(false);
-  const [isMealNew, setIsMealNew] = useState(false);
+  const [isDishRepeat, setIsDishRepeat] = useState(false);
+  const [isDishNew, setIsDishNew] = useState(false);
+  const [recipes, setRecipes] = useContext(RecipeContext);
 
-  const hasMealHandler = () => {
-    setIsMealRepeat(true);
+  const handleDishRepeat = () => {
+    setIsDishRepeat(true);
     setTimeout(() => {
-      setIsMealRepeat(false);
+      setIsDishRepeat(false);
     }, 2500);
   }
 
-  const newMealHandler = () => {
-    setIsMealNew(true);
+  const handleNewDish = () => {
+    setIsDishNew(true);
     setTimeout(() => {
-      setIsMealNew(false);
+      setIsDishNew(false);
     }, 2500);
   }
+
+  console.log(recipes);
   
-  const likeHandler = () => {
+  const handleLikeClick = () => {
+
+    if (isStorageHasDish(recipe)) {
+      handleDishRepeat();
+      return;
+    }
+
     if (localStorage.getItem('recipes')) {
-      updateStorageData(recipe, newMealHandler, hasMealHandler);
+      updateStorageData(recipe);
+      handleNewDish();
     } else {
       createStorageData(recipe);
+      handleNewDish();
     }
+    setRecipes((prevRecipes: Array<IRecipeData>) => [...prevRecipes, recipe])
   }
 
-  const buttonText = isMealRepeat ? 'Already in your favourite' : 'Adding to favourites...';
+  const buttonText = isDishRepeat ? 'Already in your favourite' : 'Adding to favourites...';
 
   return (
     <div className="buttons-wrapper">
@@ -47,9 +61,9 @@ const MainButtons = ({skipHandler, recipe}: IMainButtonsProps) => {
       />
       <Button 
         classList={'like-button'}
-        text={!isMealRepeat && !isMealNew ?
+        text={!isDishRepeat && !isDishNew ?
           'Like' : buttonText}
-        handler={likeHandler}
+        handler={handleLikeClick}
       />
     </div>
   )

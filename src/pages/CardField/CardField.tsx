@@ -20,7 +20,15 @@ const CardField = (): JSX.Element => {
   }
 
   useEffect(() => {
-    getCardData();
+    let componentMounted = true;
+
+    if (componentMounted) {
+      getCardData();
+    }
+
+    return () => {
+      componentMounted = false;
+    }
   }, [])
 
   return (

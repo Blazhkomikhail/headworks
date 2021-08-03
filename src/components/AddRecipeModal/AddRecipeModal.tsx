@@ -1,18 +1,23 @@
 import React, { useState } from "react";
+import createStorageData from "../../utils/createStorageData";
 import updateStorageData from "../../utils/updateStorageData";
 import Button from "../Button/Button";
-import './addRecipeModal.scss';
 import TextInput from "./TextInput/TextInput";
+import { useContext } from "react";
+import { RecipeContext } from '../../shared/RecipeProvider';
+import { IRecipeData } from "../../shared/shared";
+import './addRecipeModal.scss';
 
 const DESTROY_DELAY = 1500; 
 
-const AddRecipeModal = ({destroyHandler}: {destroyHandler: () => void}): JSX.Element => {
+const AddRecipeModal = ({handleDestroyModal}: {handleDestroyModal: () => void}): JSX.Element => {
   const [name, setName] = useState('');
   const [instruction, setInstruction] = useState('');
   const [area, setArea] = useState('');
   const [categoty, setCategory] = useState('');
   const [createButtonText, setCreateButtonText] = useState('Create');
-
+  const [recipes, setRecipes] = useContext(RecipeContext);
+  console.log(recipes);
   const updateName = (e: React.FormEvent<HTMLInputElement>) => {
     setName(e.currentTarget.value);
   }
@@ -29,14 +34,14 @@ const AddRecipeModal = ({destroyHandler}: {destroyHandler: () => void}): JSX.Ele
     setCategory(e.currentTarget.value);
   }
 
-  const addDishHandler = () => {
-    setCreateButtonText('Adding');
+  const handleAddDish = () => {
+    setCreateButtonText('Adding...');
     setTimeout(() => {
       setCreateButtonText('Create');
     }, DESTROY_DELAY);
   }
 
-  const createHandler = () => {
+  const handleCreateDish = () => {
     const customDish = {
       strArea: area || 'World',
       strCategory: categoty || 'Just food',
@@ -46,12 +51,16 @@ const AddRecipeModal = ({destroyHandler}: {destroyHandler: () => void}): JSX.Ele
     }
 
     if (localStorage.getItem('recipes')) {
-      updateStorageData(customDish, addDishHandler, addDishHandler);
+      updateStorageData(customDish);
+      handleAddDish();
+    } else {
+      createStorageData(customDish);
+      handleAddDish();
     }
+    setRecipes((prevRecipes: Array<IRecipeData>) => [...prevRecipes!, customDish]);
     
     setTimeout(() => {
-      destroyHandler();
-      window.location.reload(); //TO DO 
+      handleDestroyModal();
     }, DESTROY_DELAY)
   }
   
@@ -70,10 +79,10 @@ const AddRecipeModal = ({destroyHandler}: {destroyHandler: () => void}): JSX.Ele
         <div className="modal_buttons-wrapper">
           <Button classList={'modal_cancel-button'}
                   text={'Cancel'}
-                  handler={destroyHandler} />
+                  handler={handleDestroyModal} />
           <Button classList={'modal_create-button'}
                   text={createButtonText}
-                  handler={createHandler} />
+                  handler={handleCreateDish} />
         </div>
       </div>
     </div>

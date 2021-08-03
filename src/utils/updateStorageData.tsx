@@ -1,9 +1,8 @@
 import { IRecipeData } from "../shared/shared";
 
 const updateStorageData = (
-  {strMeal, strInstructions, strArea, strCategory, strMealThumb}: IRecipeData,
-  newMealHeandler: () => void,
-  repeatMealHeandler: () => void ) => {
+  {strMeal, strInstructions, strArea, strCategory, strMealThumb}: IRecipeData) => {
+  
   const dishData = {
     strMeal,
     strInstructions,
@@ -11,15 +10,9 @@ const updateStorageData = (
     strCategory,
     strMealThumb
   }; 
-  const storageData = JSON.parse(localStorage.getItem('recipes'));
-  const isStorageHasDish = storageData.some((recipe: IRecipeData) => recipe.strMeal === dishData.strMeal);
   
-  if (!isStorageHasDish) {
-    newMealHeandler();
-    storageData.push(dishData);
-  } else {
-    repeatMealHeandler();
-  }
+  const storageData = JSON.parse(localStorage.getItem('recipes'));
+  storageData.push(dishData);
 
   localStorage.setItem('recipes', JSON.stringify(storageData));
 }

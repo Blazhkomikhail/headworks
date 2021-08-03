@@ -1,16 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link } from 'react-router-dom';
-import AddRecipeModal from "../AddRecipeModal/AddRecipeModal";
 import Button from "../Button/Button";
+import { RecipeContext } from "../../shared/RecipeProvider";
+import AddRecipeModal from '../AddRecipeModal/AddRecipeModal';
 import './header.scss';
 
 const body = document.querySelector('body');
 
 const Header = () => {
-  const [isRandomButtonActive, setIsRandomButtonActive] = useState(true);
+  const [isRandomButtonActive, setIsRandomButtonActive] = useState(false);
   const [isFavouriteButtonActive, setIsFavouriteButtonActive] = useState(false);
   const [isModalShowed, setIsModalShowed] = useState(false);
+  const [recipes] = useContext(RecipeContext);
+
+  const isFavouritesPage = window.location.hash.slice(2) === 'favourites';
   
+  console.log(recipes);
+  useEffect(() => {
+    if (isFavouritesPage) {
+      activateFavouriteButton();
+    } else { 
+      activateRandomButton();
+    }
+  }, [])
+
   const activateRandomButton = () => {
     setIsFavouriteButtonActive(false);
     setIsRandomButtonActive(true);
@@ -21,12 +34,11 @@ const Header = () => {
     setIsRandomButtonActive(false);
   }
 
-  const isFavouritesPage = window.location.hash.slice(2) === 'favourites';
-  const showModalHandler = () => { 
+  const handleShowModal = () => { 
     setIsModalShowed(true);
     body.classList.add('stop-scrolling');
   }
-  const destroyModalHandler = () => {
+  const handleDestroyModal = () => {
     setIsModalShowed(false);
     body.classList.remove('stop-scrolling');
   } 
@@ -47,7 +59,7 @@ const Header = () => {
             <li className={
               `header_nav-item${isFavouriteButtonActive ? ' header_nav-item__active' : ''}`}
               onClick={activateFavouriteButton} >
-              Farvourites
+              Farvourites: {recipes.length}
             </li>
           </Link>
         </ul>
@@ -56,9 +68,9 @@ const Header = () => {
       { isFavouritesPage && 
         <Button classList={'header_add-dish-button'} 
                 text={'Add custom dish'}
-                handler={showModalHandler} />
+                handler={handleShowModal} />
       }
-      { isModalShowed && <AddRecipeModal destroyHandler={destroyModalHandler} /> }
+      { isModalShowed && <AddRecipeModal handleDestroyModal={handleDestroyModal} /> }
     </header>
   )
 }
