@@ -59,11 +59,11 @@ const AddRecipeModal = ({destroyHandler}: {destroyHandler: () => void}): JSX.Ele
     <div className="modal">
       <div className="modal_wrapper">
         <form className="modal_form">
-          <TextInput labelName={'Dish name:'} name={'name'} value={name} handler={updateName} />
-          <TextInput labelName={'Area of cuisine:'} name={'area'} value={area} handler={updateArea} />
-          <TextInput labelName={'Categoty:'} name={'categoty'} value={categoty} handler={updateCategoty} />
-          <label htmlFor="instruction"> 
-            Instructions:
+          <TextInput labelName={'Dish name'} name={'name'} value={name} handler={updateName} classList="modal_text-input"/>
+          <TextInput labelName={'Area of cuisine'} name={'area'} value={area} handler={updateArea} classList="modal_text-input"/>
+          <TextInput labelName={'Categoty'} name={'categoty'} value={categoty} handler={updateCategoty} classList="modal_text-input"/>
+          <label className="modal_textarea-label" htmlFor="instruction"> 
+            Instructions
             <textarea className="modal_textarea" name="instruction" value={instruction} onChange={updateInstruction} />
           </label>
         </form>
