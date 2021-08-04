@@ -4,7 +4,6 @@ import updateStorageData from '../../utils/updateStorageData';
 import Button from '../Button/Button';
 import TextInput from './TextInput/TextInput';
 import { RecipeContext } from '../../shared/RecipeProvider';
-import { IRecipeData } from '../../shared/interface';
 import './addRecipeModal.scss';
 
 const DESTROY_DELAY = 1500;
@@ -19,7 +18,7 @@ const AddRecipeModal = ({
   const [area, setArea] = useState('');
   const [categoty, setCategory] = useState('');
   const [createButtonText, setCreateButtonText] = useState('Create');
-  const [recipes, setRecipes] = useContext(RecipeContext);
+  const [recipes, handleSetRecipes] = useContext(RecipeContext);
 
   const updateName = (e: React.FormEvent<HTMLInputElement>) => {
     setName(e.currentTarget.value);
@@ -59,10 +58,7 @@ const AddRecipeModal = ({
       createStorageData(customDish);
     }
     handleAddDish();
-    setRecipes((prevRecipes: Array<IRecipeData>) => [
-      ...prevRecipes,
-      customDish,
-    ]);
+    handleSetRecipes(customDish);
 
     setTimeout(() => {
       handleDestroyModal();

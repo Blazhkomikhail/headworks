@@ -20,14 +20,14 @@ const MainButtons = ({
 }: IMainButtonsProps): JSX.Element => {
   const [isDishRepeat, setIsDishRepeat] = useState(false);
   const [isDishNew, setIsDishNew] = useState(false);
-  const [recipes, setRecipes] = useContext(RecipeContext);
+  const [recipes, handleSetRecipes] = useContext(RecipeContext);
   let timeOutId: NodeJS.Timeout;
 
   useEffect(() => {
-    return ()=>{ 
+    return () => {
       clearTimeout(timeOutId);
-    }
-  })
+    };
+  },[]);
 
   const handleDishRepeat = () => {
     setIsDishRepeat(true);
@@ -56,7 +56,7 @@ const MainButtons = ({
     }
 
     handleNewDish();
-    setRecipes((prevRecipes: Array<IRecipeData>) => [...prevRecipes, recipe]);
+    handleSetRecipes(recipe);
   };
 
   const buttonText = isDishRepeat

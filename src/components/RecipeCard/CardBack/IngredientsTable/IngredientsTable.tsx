@@ -4,7 +4,7 @@ import capitalizeFirstLetter from '../../../../utils/capitalizeFirstLetter';
 
 const IngredientsTable = ({ recipe }: ICardProp): JSX.Element => {
   const rows = [];
-  const maxIngredientCount = 20;
+  const maxIngredientCount = 14;
 
   for (let i = 1; i <= maxIngredientCount; i += 1) {
     if (recipe[`strIngredient${i}`]) {
