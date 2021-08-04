@@ -8,5 +8,5 @@ export interface IRecipeData {
 }
 
 export interface ICardProp {
-  recipe: IRecipeData
+  recipe: IRecipeData;
 }

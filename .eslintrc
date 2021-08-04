@@ -9,8 +9,8 @@
   ],
 
   "extends": [
-    "airbnb-typescript/base",
-    "plugin:prettier/recommended"
+    "airbnb-typescript",
+    "airbnb-typescript-prettier"
   ],
 
   "parser":"@typescript-eslint/parser",
@@ -26,13 +26,25 @@
 
   "rules" : {
     "import/prefer-default-export": "off",
-    "no-control-regex": 0,
-    "no-new": 0,
+    "no-unused-vars": "off",
     "prettier/prettier": [
       "warn",
       {
         "singleQuote": true
       }
     ]
+  },
+
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx"
+        ]
+      }
+    }
   }
 }

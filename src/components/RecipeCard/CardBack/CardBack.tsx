@@ -1,4 +1,4 @@
-import React  from 'react';
+import React from 'react';
 import { IRecipeData } from '../../../shared/interface';
 import Button from '../../Button/Button';
 import IngredientsTable from './IngredientsTable/IngredientsTable';
@@ -8,19 +8,19 @@ interface ICardBackData {
   flipHandler: () => void;
 }
 
-const CardBack = ({recipeData, flipHandler}: ICardBackData) => {
+const CardBack = ({ recipeData, flipHandler }: ICardBackData): JSX.Element => {
   return (
     <div className="card_back">
       <h2 className="card_heading">{recipeData.strMeal}</h2>
-      <IngredientsTable recipe={recipeData}/>
+      <IngredientsTable recipe={recipeData} />
 
-      <Button 
-          classList={'card_flip-btn card_flip-btn__back'}
-          text={'Back'}
-          handler={flipHandler}
-        />      
+      <Button
+        classList="card_flip-btn card_flip-btn__back"
+        text="Back"
+        handler={flipHandler}
+      />
     </div>
-  )
-}
+  );
+};
 
 export default CardBack;

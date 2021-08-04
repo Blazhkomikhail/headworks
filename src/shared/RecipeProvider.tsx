@@ -2,8 +2,14 @@ import React, { useState, createContext } from 'react';
 
 export const RecipeContext = createContext([]);
 
-export const RecipeProvider = (props: {
-  children: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal;
+export const RecipeProvider = ({
+  children,
+}: {
+  children:
+    | boolean
+    | React.ReactChild
+    | React.ReactFragment
+    | React.ReactPortal;
 }) => {
   const storageData = JSON.parse(localStorage.getItem('recipes')) || [];
 
@@ -11,7 +17,7 @@ export const RecipeProvider = (props: {
 
   return (
     <RecipeContext.Provider value={[recipes, setRecipes]}>
-      {props.children}
+      {children}
     </RecipeContext.Provider>
-  )
-}
+  );
+};

@@ -1,16 +1,21 @@
-import { IRecipeData } from "../shared/interface";
+import { IRecipeData } from '../shared/interface';
 
-const createStorageData = (
-  {strMeal, strInstructions, strArea, strCategory, strMealThumb}: IRecipeData) => {
+const createStorageData = ({
+  strMeal,
+  strInstructions,
+  strArea,
+  strCategory,
+  strMealThumb,
+}: IRecipeData): void => {
   const mealData = {
     strMeal,
     strInstructions,
     strArea,
     strCategory,
-    strMealThumb
+    strMealThumb,
   };
   const recipeStore = new Array(mealData);
   localStorage.setItem('recipes', JSON.stringify(recipeStore));
-}
+};
 
 export default createStorageData;

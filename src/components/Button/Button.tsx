@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import './button.scss';
 
 interface IButtonProps {
@@ -7,17 +7,22 @@ interface IButtonProps {
   handler: () => void;
 }
 
-const Button = ({classList = '', text = 'Button', handler}: IButtonProps) => {
-
+const Button = ({
+  classList = '',
+  text = 'Button',
+  handler,
+}: IButtonProps): JSX.Element => {
   return (
-    <button 
-      className={`button ${Array.isArray(classList) ? classList.join(' ') : classList}` } 
+    <button
+      className={`button ${
+        Array.isArray(classList) ? classList.join(' ') : classList
+      }`}
       type="button"
       onClick={handler}
     >
       {text}
     </button>
-  )
-}
+  );
+};
 
 export default Button;

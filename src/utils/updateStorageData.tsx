@@ -1,20 +1,24 @@
-import { IRecipeData } from "../shared/interface";
+import { IRecipeData } from '../shared/interface';
 
-const updateStorageData = (
-  {strMeal, strInstructions, strArea, strCategory, strMealThumb}: IRecipeData) => {
-  
+const updateStorageData = ({
+  strMeal,
+  strInstructions,
+  strArea,
+  strCategory,
+  strMealThumb,
+}: IRecipeData): void => {
   const dishData = {
     strMeal,
     strInstructions,
     strArea,
     strCategory,
-    strMealThumb
-  }; 
-  
+    strMealThumb,
+  };
+
   const storageData = JSON.parse(localStorage.getItem('recipes'));
   storageData.push(dishData);
 
   localStorage.setItem('recipes', JSON.stringify(storageData));
-}
+};
 
 export default updateStorageData;
