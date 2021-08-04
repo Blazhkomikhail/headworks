@@ -1,6 +1,6 @@
 import React from "react";
-import { ICardProp } from "../../../shared/shared";
-import capitalizeFirstLetter from "../../../utils/capitalizeFirstLetter";
+import { ICardProp } from "../../../../shared/interface";
+import capitalizeFirstLetter from "../../../../utils/capitalizeFirstLetter";
 
 const IngredientsTable = ({recipe}: ICardProp): JSX.Element => {
   if (!recipe) return;

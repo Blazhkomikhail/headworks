@@ -1,4 +1,4 @@
-import { IRecipeData } from "../shared/shared";
+import { IRecipeData } from "../shared/interface";
 
 const createStorageData = (
   {strMeal, strInstructions, strArea, strCategory, strMealThumb}: IRecipeData) => {

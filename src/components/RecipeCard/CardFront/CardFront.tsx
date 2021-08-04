@@ -46,17 +46,18 @@ const CardFront = ({name, area, instruction, categoty, picture, handleFlip}: ICa
         <div className="card_meal-main-text">
           <h2 className="card_heading">{name}</h2>
           <p className="card_instructions">{instructionText}</p>
-          {isTextCutted &&
+          { isTextCutted &&
             <span className="card_more-less-text"
               onClick={instructionTextHandler} >
               {isTextOpened ? 'Less' : 'More'}
-            </span>}
+            </span>
+          }
         </div>
         { !isFavouritesPage && <Button 
           classList={'card_flip-btn'}
           text={'Ingredients'}
-          handler={handleFlip}
-        />}
+          handler={handleFlip} />
+        }
       </div>
     </div>
   )

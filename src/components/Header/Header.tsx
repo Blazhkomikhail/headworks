@@ -15,7 +15,6 @@ const Header = () => {
 
   const isFavouritesPage = window.location.hash.slice(2) === 'favourites';
   
-  console.log(recipes);
   useEffect(() => {
     if (isFavouritesPage) {
       activateFavouriteButton();

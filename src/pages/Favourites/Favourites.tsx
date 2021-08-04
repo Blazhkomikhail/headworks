@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
-import { IRecipeData } from "../../shared/shared";
+import { IRecipeData } from "../../shared/interface";
 import RecipeCard from "../../components/RecipeCard/RecipeCard";
 import { RecipeContext } from "../../shared/RecipeProvider";
 import './favourites.scss';
 
 const Favourites = () => {
+  const [recipes] = useContext(RecipeContext);
 
-  const [recipes, setRecipes] = useContext(RecipeContext);
   let recipeCards = [];
   if (recipes) {
     recipeCards = recipes.map((recipe: IRecipeData, i: number) => (
@@ -16,8 +16,6 @@ const Favourites = () => {
       /> 
     ));
   }
-
-  console.log(setRecipes);
 
   return (
     <main className="favourites">

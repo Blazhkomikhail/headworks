@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { ICardProp } from "../../shared/shared";
+import { ICardProp } from "../../shared/interface";
 import CardBack from "./CardBack/CardBack";
 import CardFront from "./CardFront/CardFront";
 import './recipeCard.scss';

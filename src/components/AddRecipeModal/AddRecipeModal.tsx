@@ -5,7 +5,7 @@ import Button from "../Button/Button";
 import TextInput from "./TextInput/TextInput";
 import { useContext } from "react";
 import { RecipeContext } from '../../shared/RecipeProvider';
-import { IRecipeData } from "../../shared/shared";
+import { IRecipeData } from "../../shared/interface";
 import './addRecipeModal.scss';
 
 const DESTROY_DELAY = 1500; 
@@ -17,7 +17,7 @@ const AddRecipeModal = ({handleDestroyModal}: {handleDestroyModal: () => void}):
   const [categoty, setCategory] = useState('');
   const [createButtonText, setCreateButtonText] = useState('Create');
   const [recipes, setRecipes] = useContext(RecipeContext);
-  console.log(recipes);
+
   const updateName = (e: React.FormEvent<HTMLInputElement>) => {
     setName(e.currentTarget.value);
   }
@@ -43,8 +43,8 @@ const AddRecipeModal = ({handleDestroyModal}: {handleDestroyModal: () => void}):
 
   const handleCreateDish = () => {
     const customDish = {
-      strArea: area || 'World',
-      strCategory: categoty || 'Just food',
+      strArea: area || 'Any',
+      strCategory: categoty || 'Any',
       strInstructions: instruction || 'Default',
       strMeal: name || 'Default',
       strMealThumb: ''

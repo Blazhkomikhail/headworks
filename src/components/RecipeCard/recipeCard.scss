@@ -1,10 +1,12 @@
+@use '../../shared/variables.scss' as variables;
+
 .card-wrap {
   margin-bottom: 20px;
   perspective: 100rem;
+  background-color: #fff;
   
   &.flipped > .card { 
     transform: rotateY(180deg);
-    // transform-origin: top;
   }
 }
 
@@ -19,7 +21,6 @@
 
   position: relative;
   transform-style: preserve-3d;
-  // transform-origin: bottom;
   transition: all 0.5s;
 
   border-radius: 4px; 
@@ -61,7 +62,7 @@
     }
 
     &-table thead {
-      background: #5e69ff;
+      background: variables.$secondButtonColor;
       color: #fff;
       height: 30px;
     }
@@ -71,7 +72,7 @@
     }
 
     &-table td{
-      border-bottom: 1px solid #5e69ff;
+      border-bottom: 1px solid variables.$secondButtonColor;
     }
   }
 
@@ -80,12 +81,6 @@
 
     width: 200px;
     height: 200px;
-
-    // align-self: center;
-    // flex: 1 0 auto;
-
-    // position: relative;
-    // left: -50px;
 
     background-size: cover;
     background-position: center;
@@ -151,7 +146,7 @@
     right: -15px;
 
     border: none;
-    background-color: #fe0667;
+    background-color: variables.$mainButtonColor;
     color: #fff;
 
     &__back {

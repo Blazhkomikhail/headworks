@@ -1,37 +1,37 @@
 import React, { useState, useContext } from "react";
-import { IRecipeData } from "../../shared/shared";
 import createStorageData from "../../utils/createStorageData";
 import updateStorageData from "../../utils/updateStorageData";
-import Button from "../Button/Button";
 import { RecipeContext } from "../../shared/RecipeProvider";
-import './mainButton.scss';
 import isStorageHasDish from "../../utils/isStorageHasDish";
+import { IRecipeData } from "../../shared/interface";
+import Button from "../Button/Button";
+import './mainButton.scss';
+
+const UPDATE_TEXT_DELAY = 1500;
 
 interface IMainButtonsProps {
-  skipHandler: () => void;
+  handleSkip: () => void;
   recipe: IRecipeData;
 }
 
-const MainButtons = ({skipHandler, recipe}: IMainButtonsProps) => {
+const MainButtons = ({handleSkip, recipe}: IMainButtonsProps) => {
   const [isDishRepeat, setIsDishRepeat] = useState(false);
   const [isDishNew, setIsDishNew] = useState(false);
   const [recipes, setRecipes] = useContext(RecipeContext);
-
+  
   const handleDishRepeat = () => {
     setIsDishRepeat(true);
     setTimeout(() => {
       setIsDishRepeat(false);
-    }, 2500);
+    }, UPDATE_TEXT_DELAY);
   }
 
   const handleNewDish = () => {
     setIsDishNew(true);
     setTimeout(() => {
       setIsDishNew(false);
-    }, 2500);
+    }, UPDATE_TEXT_DELAY);
   }
-
-  console.log(recipes);
   
   const handleLikeClick = () => {
 
@@ -42,22 +42,22 @@ const MainButtons = ({skipHandler, recipe}: IMainButtonsProps) => {
 
     if (localStorage.getItem('recipes')) {
       updateStorageData(recipe);
-      handleNewDish();
     } else {
       createStorageData(recipe);
-      handleNewDish();
     }
+
+    handleNewDish();
     setRecipes((prevRecipes: Array<IRecipeData>) => [...prevRecipes, recipe])
   }
 
-  const buttonText = isDishRepeat ? 'Already in your favourite' : 'Adding to favourites...';
+  const buttonText = isDishRepeat ? 'Already in your favourites' : 'Adding to favourites...';
 
   return (
     <div className="buttons-wrapper">
       <Button 
         classList={'skip-button'}
         text={'Skip'}
-        handler={skipHandler}
+        handler={handleSkip}
       />
       <Button 
         classList={'like-button'}

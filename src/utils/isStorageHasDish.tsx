@@ -1,4 +1,4 @@
-import { IRecipeData } from "../shared/shared";
+import { IRecipeData } from "../shared/interface";
 
 const isStorageHasDish = (dishData: IRecipeData): boolean => { 
   if (!localStorage.getItem('recipes')) return;
@@ -7,4 +7,3 @@ const isStorageHasDish = (dishData: IRecipeData): boolean => {
 }
 
 export default isStorageHasDish;
-

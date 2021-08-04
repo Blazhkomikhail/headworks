@@ -1,14 +1,16 @@
+@use '../../shared/variables.scss' as variables;
+
 .buttons-wrapper {
   display: flex;
 }
 
 .skip-button {
-  background: #fe0667;
+  background: variables.$mainButtonColor;
 }
 
 .like-button {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #5e69ff;
+  background: variables.$secondButtonColor;
 }

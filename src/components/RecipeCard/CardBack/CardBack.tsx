@@ -1,7 +1,7 @@
 import React  from 'react';
-import { IRecipeData } from '../../../shared/shared';
+import { IRecipeData } from '../../../shared/interface';
 import Button from '../../Button/Button';
-import IngredientsTable from '../IngredientsTable/IngredientsTable';
+import IngredientsTable from './IngredientsTable/IngredientsTable';
 
 interface ICardBackData {
   recipeData: IRecipeData;
