@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { IRecipeData } from '../../shared/interface';
 import RecipeCard from '../../components/RecipeCard/RecipeCard';
-import { RecipeContext } from '../../shared/RecipeProvider';
+import { RecipesContext } from '../../shared/RecipeProvider';
 import './favourites.scss';
 
 const Favourites = (): JSX.Element => {
-  const [recipes] = useContext(RecipeContext);
+  const [recipes] = useContext(RecipesContext);
 
   let recipeCards = [];
   if (recipes) {

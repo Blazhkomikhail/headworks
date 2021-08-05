@@ -1,7 +1,7 @@
 import React, { useState, createContext } from 'react';
 import { IRecipeData } from './interface';
 
-export const RecipeContext = createContext([]);
+export const RecipesContext = createContext([]);
 
 export const RecipeProvider = ({
   children,
@@ -20,8 +20,8 @@ export const RecipeProvider = ({
     setRecipes((prevRecipes: Array<IRecipeData>) => [...prevRecipes, recipe]);
   };
   return (
-    <RecipeContext.Provider value={[recipes, handleSetRecipes]}>
+    <RecipesContext.Provider value={[recipes, handleSetRecipes]}>
       {children}
-    </RecipeContext.Provider>
+    </RecipesContext.Provider>
   );
 };

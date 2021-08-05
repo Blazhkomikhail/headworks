@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import createStorageData from '../../utils/createStorageData';
 import updateStorageData from '../../utils/updateStorageData';
-import { RecipeContext } from '../../shared/RecipeProvider';
+import { RecipesContext } from '../../shared/RecipeProvider';
 import isStorageHasDish from '../../utils/isStorageHasDish';
 import { IRecipeData } from '../../shared/interface';
 import Button from '../Button/Button';
@@ -20,27 +20,29 @@ const MainButtons = ({
 }: IMainButtonsProps): JSX.Element => {
   const [isDishRepeat, setIsDishRepeat] = useState(false);
   const [isDishNew, setIsDishNew] = useState(false);
-  const [recipes, handleSetRecipes] = useContext(RecipeContext);
-  let timeOutId: NodeJS.Timeout;
+  const [recipes, handleSetRecipes] = useContext(RecipesContext);
+  const [timeOutId, setTimeoutId] = useState<NodeJS.Timeout>();
 
   useEffect(() => {
     return () => {
       clearTimeout(timeOutId);
     };
-  },[]);
+  }, [timeOutId]);
 
   const handleDishRepeat = () => {
     setIsDishRepeat(true);
-    timeOutId = setTimeout(() => {
+    const id = setTimeout(() => {
       setIsDishRepeat(false);
     }, UPDATE_TEXT_DELAY);
+    setTimeoutId(id);
   };
 
   const handleNewDish = () => {
     setIsDishNew(true);
-    timeOutId = setTimeout(() => {
+    const id = setTimeout(() => {
       setIsDishNew(false);
     }, UPDATE_TEXT_DELAY);
+    setTimeoutId(id);
   };
 
   const handleLikeClick = () => {
