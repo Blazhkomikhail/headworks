@@ -2,14 +2,20 @@
 
 .header {
   height: 50px;
-
-  position: relative;
+  background-color: #909090;
 
   display: flex;
   justify-content: center;
-  align-items: center;
 
-  background-color: #909090;
+  &-content {
+    width: 100%;
+    max-width: 1768px;
+
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
   &_nav {
     width: 30vw;
@@ -62,4 +68,22 @@
     }
   }
   
+}
+
+@media all and (max-width: 768px) {
+
+  .header {
+    height: 100px;
+
+    &-content{ 
+      flex-direction: column;
+      justify-content: space-around;
+    }
+
+    &_add-dish-button{ 
+      position: static;
+    }
+
+  }
+
 }

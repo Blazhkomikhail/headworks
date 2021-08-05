@@ -160,3 +160,19 @@
     }
   }
 }
+
+@media all and (max-width: 768px) {
+
+  .card {
+    width: 80vw;
+  }
+  
+}
+
+@media all and (max-width: 520px) {
+
+  .card {
+    width: 90vw;
+  }
+
+}
