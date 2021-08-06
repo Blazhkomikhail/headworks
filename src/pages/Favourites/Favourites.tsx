@@ -12,7 +12,6 @@ const Favourites = (): JSX.Element => {
   if (recipes) {
     recipeCards = recipes.map((recipe: IRecipeData) => (
       <RecipeCard recipe={recipe} key={generateKey(recipe.strArea)} />
-
     ));
   }
 
