@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { IRecipeData } from '../../shared/interface';
 import RecipeCard from '../../components/RecipeCard/RecipeCard';
 import { RecipesContext } from '../../shared/RecipeProvider';
+import generateKey from '../../utils/generateKey';
 import './favourites.scss';
 
 const Favourites = (): JSX.Element => {
@@ -10,7 +11,8 @@ const Favourites = (): JSX.Element => {
   let recipeCards = [];
   if (recipes) {
     recipeCards = recipes.map((recipe: IRecipeData) => (
-      <RecipeCard recipe={recipe} key={Math.random()} />
+      <RecipeCard recipe={recipe} key={generateKey(recipe.strArea)} />
+
     ));
   }
 
